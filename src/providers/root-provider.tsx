@@ -15,7 +15,7 @@ export const RootProviders = ({ children }: RootProvidersProps) => {
     <SessionProvider>
       <ErrorBoundary>
         <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-        <ToastContainer position={'top-right'} limit={3} />
+        <ToastContainer position={'bottom-right'} limit={3} />
       </ErrorBoundary>
     </SessionProvider>
   );
