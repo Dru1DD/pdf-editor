@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useState, useRef, useEffect } from 'react';
 import { Worker, Viewer } from '@react-pdf-viewer/core';
 import { defaultLayoutPlugin } from '@react-pdf-viewer/default-layout';
@@ -10,6 +11,7 @@ import { Upload, Save, StickyNote, X, Pencil, Type, MousePointer2 } from 'lucide
 import '@react-pdf-viewer/core/lib/styles/index.css';
 import '@react-pdf-viewer/default-layout/lib/styles/index.css';
 import { toast } from 'react-toastify';
+import { Button } from '@/components/ui/button';
 
 type Tool = 'note' | 'pencil' | 'text';
 
@@ -546,6 +548,12 @@ export default function EditorPage() {
           </button>
         </div>
       )}
+
+      <Link href="/profile" className="mt-6">
+        <Button className="flex-1 bg-neutral-800 hover:bg-neutral-700 text-white rounded-xl flex items-center justify-center gap-2">
+          Profile
+        </Button>
+      </Link>
     </div>
   );
 }

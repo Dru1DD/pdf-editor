@@ -172,7 +172,7 @@ NEXTAUTH_URL=http://localhost:3000
 NEXTAUTH_SECRET=your_long_random_secret_string
 ```
 
-For CredentialsProvider in NextAuth, the email and password must match your Prisma database records oraz something else
+For CredentialsProvider in NextAuth, the email and password must match your Prisma database records
 
 ### 🔧 Troubleshooting
 
