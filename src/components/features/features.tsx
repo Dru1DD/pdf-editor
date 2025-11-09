@@ -1,26 +1,23 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { ShieldCheck, PencilLine, Zap } from "lucide-react";
+import { motion } from 'framer-motion';
+import { ShieldCheck, PencilLine, Zap } from 'lucide-react';
 
 const features = [
   {
     icon: PencilLine,
-    title: "Minimal Editing",
-    description:
-      "Make quick changes to your PDFs — text, annotations, highlights — without heavy tools.",
+    title: 'Minimal Editing',
+    description: 'Make quick changes to your PDFs — text, annotations, highlights — without heavy tools.',
   },
   {
     icon: ShieldCheck,
-    title: "Secure Cloud Storage",
-    description:
-      "Your files stay private. Stored safely with Supabase and encrypted access.",
+    title: 'Secure Cloud Storage',
+    description: 'Your files stay private. Stored safely with Supabase and encrypted access.',
   },
   {
     icon: Zap,
-    title: "Lightning Fast Export",
-    description:
-      "Download your updated PDFs in seconds with optimized compression and instant rendering.",
+    title: 'Lightning Fast Export',
+    description: 'Download your updated PDFs in seconds with optimized compression and instant rendering.',
   },
 ];
 

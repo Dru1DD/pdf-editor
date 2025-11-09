@@ -1,25 +1,23 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import { Upload, Edit3, Download } from "lucide-react";
+import { motion } from 'framer-motion';
+import { Upload, Edit3, Download } from 'lucide-react';
 
 const steps = [
   {
     icon: Upload,
-    title: "1. Upload your file",
-    description:
-      "Drag & drop or select your PDF. We never store it longer than necessary.",
+    title: '1. Upload your file',
+    description: 'Drag & drop or select your PDF. We never store it longer than necessary.',
   },
   {
     icon: Edit3,
-    title: "2. Make edits",
-    description:
-      "Adjust text, add notes, highlight or remove pages — fast and intuitive.",
+    title: '2. Make edits',
+    description: 'Adjust text, add notes, highlight or remove pages — fast and intuitive.',
   },
   {
     icon: Download,
-    title: "3. Export instantly",
-    description: "Click export and receive a clean, updated PDF in moments.",
+    title: '3. Export instantly',
+    description: 'Click export and receive a clean, updated PDF in moments.',
   },
 ];
 

@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { motion } from "framer-motion";
-import Link from "next/link";
+import { motion } from 'framer-motion';
+import Link from 'next/link';
 
 export default function Footer() {
   return (
@@ -13,9 +13,8 @@ export default function Footer() {
           transition={{ duration: 0.4 }}
           className="text-lg text-neutral-400"
         >
-          © {new Date().getFullYear()}{" "}
-          <span className="text-indigo-400 font-semibold">PDFix</span>. All
-          rights reserved.
+          © {new Date().getFullYear()} <span className="text-indigo-400 font-semibold">PDFix</span>. All rights
+          reserved.
         </motion.h3>
 
         <div className="flex items-center gap-6 text-neutral-400 text-sm">

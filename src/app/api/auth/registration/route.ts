@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { prisma } from '@/lib/prisma';
 import bcrypt from 'bcrypt';
 
-export const GET = () => { };
+export const GET = () => {};
 
 /**
  * @swagger
@@ -61,4 +61,3 @@ export const POST = async (req: NextRequest) => {
     return NextResponse.json({ message: (error as Error).message || 'Internal error' }, { status: 500 });
   }
 };
-

@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { useRegister } from "@/hooks/use-register";
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useRegister } from '@/hooks/use-register';
 
 export default function RegisterPage() {
-  const [form, setForm] = useState({ name: "", email: "", password: "" });
+  const [form, setForm] = useState({ name: '', email: '', password: '' });
   const router = useRouter();
   const registerMutation = useRegister();
 
@@ -17,7 +17,7 @@ export default function RegisterPage() {
     e.preventDefault();
     try {
       await registerMutation.mutateAsync(form);
-      router.push("/login");
+      router.push('/login');
     } catch {
       /* handled in hook */
     }
@@ -57,10 +57,7 @@ export default function RegisterPage() {
 
           {registerMutation.isError && (
             <p className="text-red-500 text-sm text-center">
-              {String(
-                (registerMutation.error as Error)?.message ||
-                  "Something went wrong"
-              )}
+              {String((registerMutation.error as Error)?.message || 'Something went wrong')}
             </p>
           )}
 
@@ -69,12 +66,12 @@ export default function RegisterPage() {
             type="submit"
             className="w-full bg-indigo-500 hover:bg-indigo-600 mt-4 text-white rounded-xl"
           >
-            {registerMutation.isPending ? "Creating..." : "Register"}
+            {registerMutation.isPending ? 'Creating...' : 'Register'}
           </Button>
         </form>
 
         <p className="text-sm text-neutral-400 mt-6 text-center">
-          Already have an account?{" "}
+          Already have an account?{' '}
           <Link href="/login" className="text-indigo-400 hover:underline">
             Login
           </Link>

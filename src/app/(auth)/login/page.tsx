@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { useLogin } from "@/hooks/use-login";
-import Link from "next/link";
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useLogin } from '@/hooks/use-login';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 
 export default function LoginPage() {
-  const [form, setForm] = useState({ email: "", password: "" });
+  const [form, setForm] = useState({ email: '', password: '' });
   const router = useRouter();
   const login = useLogin();
 
@@ -17,7 +17,7 @@ export default function LoginPage() {
     e.preventDefault();
     try {
       await login.mutateAsync(form);
-      router.push("/profile");
+      router.push('/profile');
     } catch {
       /* handled in hook */
     }
@@ -51,7 +51,7 @@ export default function LoginPage() {
 
           {login.isError && (
             <p className="text-red-500 text-sm text-center">
-              {String((login.error as Error)?.message || "Invalid credentials")}
+              {String((login.error as Error)?.message || 'Invalid credentials')}
             </p>
           )}
 
@@ -60,12 +60,12 @@ export default function LoginPage() {
             type="submit"
             className="w-full bg-indigo-500 hover:bg-indigo-600 mt-4 text-white rounded-xl"
           >
-            {login.isPending ? "Signing in..." : "Sign In"}
+            {login.isPending ? 'Signing in...' : 'Sign In'}
           </Button>
         </form>
 
         <p className="text-sm text-neutral-400 mt-6 text-center">
-          Don’t have an account?{" "}
+          Don’t have an account?{' '}
           <Link href="/register" className="text-indigo-400 hover:underline">
             Register
           </Link>
