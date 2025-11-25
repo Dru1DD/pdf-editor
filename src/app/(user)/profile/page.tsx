@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import Loader from '@/components/loader';
 import Link from 'next/link';
-import { User, Mail, PenSquare, LogOut } from 'lucide-react';
+import { User, Mail, PenSquare, LogOut, FileText, BadgeDollarSign } from 'lucide-react';
 
 export default function ProfilePage() {
   const { data: session, status } = useSession();
@@ -26,7 +26,7 @@ export default function ProfilePage() {
   const user = session.user;
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-neutral-950 via-neutral-900 to-neutral-950 text-white flex flex-col items-center justify-center px-6 py-10">
+    <div className="min-h-screen bg-linear-to-b from-neutral-950 via-neutral-900 to-neutral-950 text-white flex flex-col items-center justify-center px-6 py-10">
       <motion.div
         initial={{ opacity: 0, y: 15 }}
         animate={{ opacity: 1, y: 0 }}
@@ -58,21 +58,37 @@ export default function ProfilePage() {
           </div>
         </div>
 
-        <div className="mt-8 flex flex-col sm:flex-row gap-3">
-          <Link href="/editor" className="flex-1">
-            <Button className="w-full bg-indigo-500 hover:bg-indigo-600 text-white rounded-xl flex items-center justify-center gap-2">
-              <PenSquare className="w-4 h-4" />
-              Go to Editor
-            </Button>
-          </Link>
+        <div className="mt-8 flex flex-col gap-3">
+          <div className="flex flex-col sm:flex-row gap-3">
+            <Link href="/exchange" className="flex-1">
+              <Button className="w-full bg-indigo-500 hover:bg-indigo-600 text-white rounded-xl flex items-center justify-center gap-2">
+                <BadgeDollarSign className="w-4 h-4" />
+                Go to Exchange
+              </Button>
+            </Link>
+            <Link href="/document" className="flex-1">
+              <Button className="w-full bg-indigo-500 hover:bg-indigo-600 text-white rounded-xl flex items-center justify-center gap-2">
+                <FileText className="w-4 h-4" />
+                Go to Documents
+              </Button>
+            </Link>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <Link href="/editor" className="flex-1">
+              <Button className="w-full bg-indigo-500 hover:bg-indigo-600 text-white rounded-xl flex items-center justify-center gap-2">
+                <PenSquare className="w-4 h-4" />
+                Go to Editor
+              </Button>
+            </Link>
 
-          <Button
-            onClick={() => logout.mutate()}
-            className="flex-1 bg-neutral-800 hover:bg-neutral-700 text-white rounded-xl flex items-center justify-center gap-2"
-          >
-            <LogOut className="w-4 h-4" />
-            Log Out
-          </Button>
+            <Button
+              onClick={() => logout.mutate()}
+              className="w-full flex-1 bg-neutral-800 hover:bg-neutral-700 text-white rounded-xl flex items-center justify-center gap-2"
+            >
+              <LogOut className="w-4 h-4" />
+              Log Out
+            </Button>
+          </div>
         </div>
 
         <p className="mt-10 text-sm text-neutral-600 text-center">Last login: {new Date().toLocaleString()}</p>

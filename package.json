@@ -35,7 +35,6 @@
     "clsx": "^2.1.1",
     "file-saver": "^2.0.5",
     "fontkit": "^2.0.4",
-    "footer": "link:@/src/components/footer",
     "framer-motion": "^12.23.24",
     "lucide-react": "^0.553.0",
     "next": "16.0.1",
