@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-const API_KEY = process.env.EXCHANGE_API_KEY;
+const API_KEY = process.env.NEXT_PUBLIC_EXCHANGE_API_KEY;
 
 const API_URL = 'https://v6.exchangerate-api.com/v6/';
 
@@ -40,6 +40,7 @@ export async function GET(req: Request) {
     // exchangerate-api.com returns conversion_rates object
     const rate = data.conversion_rates?.[to];
 
+    console.log("res", res);
     if (!rate) {
       return NextResponse.json({ error: `Rate not found for ${to}` }, { status: 502 });
     }

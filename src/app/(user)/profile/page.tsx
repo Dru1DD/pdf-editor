@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import Loader from '@/components/loader';
 import Link from 'next/link';
+import Image from 'next/image';
 import { User, Mail, PenSquare, LogOut, FileText, BadgeDollarSign } from 'lucide-react';
 
 export default function ProfilePage() {
