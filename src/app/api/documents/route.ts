@@ -3,7 +3,6 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
 
-
 /**
  * @swagger
  * /api/documents:
@@ -38,7 +37,6 @@ import { prisma } from '@/lib/prisma';
  *       500:
  *         description: Error fetching documents
  */
-
 
 export async function GET(req: Request) {
   const url = new URL(req.url);
@@ -87,7 +85,6 @@ export async function GET(req: Request) {
  *       500:
  *         description: Error creating document
  */
-
 
 export async function POST(req: Request) {
   const session = await getServerSession(authOptions);
@@ -150,7 +147,6 @@ export async function POST(req: Request) {
  *       500:
  *         description: Error updating document
  */
-
 
 export async function PUT(req: Request) {
   const session = await getServerSession(authOptions);

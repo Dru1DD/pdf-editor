@@ -6,7 +6,7 @@ import { useLogout } from '@/hooks/use-logout';
 import { useRouter } from 'next/navigation';
 import { useUserUpdate } from '@/hooks/use-user-update';
 import { useCancelSubscription } from '@/hooks/use-cancel-subscription';
-import { useCreateCheckoutSession } from '@/hooks/use-create-checkout-session'; 
+import { useCreateCheckoutSession } from '@/hooks/use-create-checkout-session';
 import { useUser } from '@/hooks/use-user';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
@@ -15,9 +15,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { toast } from 'react-toastify';
 import { User, Mail, PenSquare, LogOut, FileText, BadgeDollarSign, Ban } from 'lucide-react';
-
-
-
 
 export default function ProfilePage() {
   const { data: session, status, update: updateSession } = useSession();
@@ -37,11 +34,10 @@ export default function ProfilePage() {
       const canceled = urlParams.get('canceled');
 
       if (success === 'true' && sessionId) {
-        mutateAsync({ userId: session.user.id!, sessionId: sessionId })
-          .then(() => {
-             updateSession(); // Refresh session to get updated isPro status
-             router.replace('/profile', undefined);
-          });
+        mutateAsync({ userId: session.user.id!, sessionId: sessionId }).then(() => {
+          updateSession(); // Refresh session to get updated isPro status
+          router.replace('/profile', undefined);
+        });
       } else if (canceled === 'true') {
         toast('Payment canceled.', { type: 'info' });
         router.replace('/profile', undefined);
@@ -57,8 +53,8 @@ export default function ProfilePage() {
     router.push('/login');
     return null;
   }
- 
-  const isPro = userData?.isPro; 
+
+  const isPro = userData?.isPro;
 
   return (
     <div className="min-h-screen bg-linear-to-b from-neutral-950 via-neutral-900 to-neutral-950 text-white flex flex-col items-center justify-center px-6 py-10">
@@ -74,12 +70,12 @@ export default function ProfilePage() {
           </div>
 
           <h1 className="text-3xl font-bold mt-2 flex items-center gap-2">
-              Hey, {userData?.name || 'User'} 👋
-              {isPro && (
-                  <span className="bg-gradient-to-r from-amber-400 to-orange-500 text-black text-xs font-bold px-2 py-1 rounded-full items-center justify-center flex shadow-lg">
-                    PRO
-                  </span>
-              )}
+            Hey, {userData?.name || 'User'} 👋
+            {isPro && (
+              <span className="bg-gradient-to-r from-amber-400 to-orange-500 text-black text-xs font-bold px-2 py-1 rounded-full items-center justify-center flex shadow-lg">
+                PRO
+              </span>
+            )}
           </h1>
           <p className="text-neutral-400">Welcome to your personal space</p>
         </div>
@@ -100,26 +96,25 @@ export default function ProfilePage() {
           </div>
         </div>
 
-
         <div className="mt-8 flex flex-col gap-3">
           {!isPro ? (
-              <Button
-                onClick={() => createCheckoutSession.mutate()}
-                disabled={createCheckoutSession.isPending}
-                className="w-full bg-green-500 hover:bg-green-600 text-white rounded-xl flex items-center justify-center gap-2"
-              >
-                <BadgeDollarSign className="w-4 h-4" />
-                {createCheckoutSession.isPending ? 'Processing...' : 'Upgrade to Pro'}
-              </Button>
+            <Button
+              onClick={() => createCheckoutSession.mutate()}
+              disabled={createCheckoutSession.isPending}
+              className="w-full bg-green-500 hover:bg-green-600 text-white rounded-xl flex items-center justify-center gap-2"
+            >
+              <BadgeDollarSign className="w-4 h-4" />
+              {createCheckoutSession.isPending ? 'Processing...' : 'Upgrade to Pro'}
+            </Button>
           ) : (
-                <Button
-                    onClick={() => cancelSubscription.mutate()}
-                    disabled={cancelSubscription.isPending}
-                    className="w-full bg-red-500/10 hover:bg-red-500/20 text-red-500 border border-red-500/20 rounded-xl flex items-center justify-center gap-2 transition-all"
-                >
-                    <Ban className="w-4 h-4" />
-                    {cancelSubscription.isPending ? 'Cancelling...' : 'Cancel Subscription'}
-                </Button>
+            <Button
+              onClick={() => cancelSubscription.mutate()}
+              disabled={cancelSubscription.isPending}
+              className="w-full bg-red-500/10 hover:bg-red-500/20 text-red-500 border border-red-500/20 rounded-xl flex items-center justify-center gap-2 transition-all"
+            >
+              <Ban className="w-4 h-4" />
+              {cancelSubscription.isPending ? 'Cancelling...' : 'Cancel Subscription'}
+            </Button>
           )}
 
           <div className="flex flex-col sm:flex-row gap-3">

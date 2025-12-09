@@ -40,7 +40,7 @@ export async function GET(req: Request) {
     // exchangerate-api.com returns conversion_rates object
     const rate = data.conversion_rates?.[to];
 
-    console.log("res", res);
+    console.log('res', res);
     if (!rate) {
       return NextResponse.json({ error: `Rate not found for ${to}` }, { status: 502 });
     }
