@@ -4,7 +4,6 @@ import { getServerSession } from 'next-auth';
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 
-
 function getStripeClient() {
   if (!process.env.STRIPE_SECRET_KEY) {
     throw new Error('Missing STRIPE_SECRET_KEY');
@@ -14,7 +13,6 @@ function getStripeClient() {
     apiVersion: '2025-11-17.clover',
   });
 }
-
 
 export async function POST(req: Request) {
   const session = await getServerSession(authOptions);
