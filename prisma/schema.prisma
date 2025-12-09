@@ -16,7 +16,11 @@ model User {
   email    String?   @unique
   image    String?
   password String
+  isPro    Boolean   @default(false)
   role     Role      @default(Customer)
+  stripeCustomerId String? @unique
+  stripeSubscriptionId String? @unique
+  subscriptionStatus String?
   sessions Session[]
   documents Document[]
 }

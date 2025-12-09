@@ -179,3 +179,9 @@ For CredentialsProvider in NextAuth, the email and password must match your Pris
 - Ensure the development server is running (`pnpm dev`)
 - Check that the database is properly configured and migrated
 - Verify that the test user exists in the database before attempting login
+
+### TEST CARD
+
+Number: 4242 4242 4242 4242
+Expiration: 12/25
+CVV: 123
