@@ -34,7 +34,7 @@ export default function ProfilePage() {
       const canceled = urlParams.get('canceled');
 
       if (success === 'true' && sessionId) {
-        mutateAsync({ userId: session.user.id!, sessionId: sessionId }).then(() => {
+        mutateAsync({ userId: session.user?.id!, sessionId: sessionId }).then(() => {
           updateSession(); // Refresh session to get updated isPro status
           router.replace('/profile', undefined);
         });

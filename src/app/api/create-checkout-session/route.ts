@@ -4,7 +4,7 @@ import { authOptions } from '@/lib/auth';
 import Stripe from 'stripe';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-    apiVersion: '2025-11-17.clover',
+  apiVersion: '2025-11-17.clover',
 });
 
 /**
@@ -44,33 +44,33 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
  */
 
 export async function POST(req: Request) {
-    const session = await getServerSession(authOptions);
+  const session = await getServerSession(authOptions);
 
-    if (!session || !session.user.email) {
-        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
-    }
+  if (!session || !session.user.email) {
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
 
-    try {
-        const { priceId } = await req.json();
+  try {
+    const { priceId } = await req.json();
 
-        const stripeSession = await stripe.checkout.sessions.create({
-            payment_method_types: ['card'],
-            line_items: [
-                {
-                    price: priceId,
-                    quantity: 1,
-                },
-            ],
-            mode: 'subscription',
-            success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/profile?success=true&session_id={CHECKOUT_SESSION_ID}`,
-            cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/profile?canceled=true`,
-            customer_email: session.user.email,
-            client_reference_id: session.user.id,
-        });
+    const stripeSession = await stripe.checkout.sessions.create({
+      payment_method_types: ['card'],
+      line_items: [
+        {
+          price: priceId,
+          quantity: 1,
+        },
+      ],
+      mode: 'subscription',
+      success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/profile?success=true&session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/profile?canceled=true`,
+      customer_email: session.user.email,
+      client_reference_id: session.user.id,
+    });
 
-        return NextResponse.json({ sessionId: stripeSession.id, url: stripeSession.url });
-    } catch (error) {
-        console.error('Stripe session creation failed:', error);
-        return NextResponse.json({ error: 'Failed to create checkout session' }, { status: 500 });
-    }
+    return NextResponse.json({ sessionId: stripeSession.id, url: stripeSession.url });
+  } catch (error) {
+    console.error('Stripe session creation failed:', error);
+    return NextResponse.json({ error: 'Failed to create checkout session' }, { status: 500 });
+  }
 }
